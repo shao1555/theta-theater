@@ -1,6 +1,5 @@
 get '/' do
-  # すべての投稿画像を返す
-  [ 200, {}, 'hello' ]
+  haml :index, locals: { urls: settings.urls }
 end
 
 get '/theater' do

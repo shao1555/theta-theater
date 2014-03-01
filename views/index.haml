@@ -1,0 +1,8 @@
+%h1
+  Theta Theater
+
+%div#photos_index
+  %ul
+    - urls.each do |url|
+      %li
+        %iframe.thumbnail{src: "#{url}?view=embed"}
