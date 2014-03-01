@@ -3,6 +3,10 @@ get '/' do
   [ 200, {}, 'hello' ]
 end
 
+get '/theater' do
+  haml :theater
+end
+
 get '/urls.json' do
   [ 200, {'Content-Type' => 'application/json'}, settings.urls.to_json ]
 end

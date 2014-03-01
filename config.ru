@@ -7,6 +7,7 @@ require 'bundler'
 Bundler.require
 
 require 'theta_theater'
+require 'sinatra/reloader' if development?
 
 ENV['EDITOR'] ||= 'vim'
 
