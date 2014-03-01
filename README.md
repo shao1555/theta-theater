@@ -15,6 +15,6 @@ todo list
 
 - [✓] Twitter Streaming API
 - [✓] WebSocket Server
-- [_] ざっくりビューをつくる
+- [✓] ざっくりビューをつくる
 - [_] ビューのお化粧
 - [_] SQLite とかに格納したい
