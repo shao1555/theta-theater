@@ -1,1 +1,1 @@
-# TODO: load libraries
+autoload :Tweet, 'theta_theater/models/tweet'
