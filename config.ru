@@ -11,6 +11,8 @@ require 'sinatra/reloader' if development?
 
 ENV['EDITOR'] ||= 'vim'
 
+set :sprockets, Sprockets::Environment.new
+
 global_config = Pit.get('theta_theater',
   require: {
     'consumer_key' => '',
@@ -20,7 +22,17 @@ global_config = Pit.get('theta_theater',
   }
 )
 
+sprockets = Sprockets::Environment.new
+Sprockets::Helpers.configure do |config|
+  config.environment = sprockets
+  config.prefix = '/assets'
+  config.digest = true
+end
+sprockets.append_path 'assets/javascripts'
+sprockets.append_path 'assets/stylesheets'
+
 configure do
+  set :sprockets, sprockets
   set :server, :thin
   set :environment, ENV['RACK_ENV'].to_sym
   set :urls, []
@@ -34,6 +46,8 @@ configure do
   disable :run, :reload
 end
 
+helpers Sprockets::Helpers
+
 require "#{File.dirname(__FILE__)}/app"
 
 Tweet.settings = settings
@@ -44,5 +58,10 @@ Tweet.fetch_all
 # UserStream で新しくツイートされた theta360 の URL を取得
 EM::defer { Tweet.stream_fetch }
 
-run Sinatra::Application
+map '/assets' do
+  run sprockets
+end
+map '/' do
+  run Sinatra::Application
+end
 
