@@ -1,17 +1,92 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (4.0.3)
+      i18n (~> 0.6, >= 0.6.4)
+      minitest (~> 4.2)
+      multi_json (~> 1.3)
+      thread_safe (~> 0.1)
+      tzinfo (~> 0.3.37)
+    addressable (2.3.5)
+    atomic (1.1.15)
+    buftok (0.2.0)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.7.0)
+    daemons (1.1.9)
+    em-websocket (0.3.8)
+      addressable (>= 2.1.1)
+      eventmachine (>= 0.12.9)
+    equalizer (0.0.9)
+    eventmachine (1.0.3)
+    execjs (2.0.2)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
+    get-twitter-oauth-token (1.1.0)
+      oauth
+    haml (4.0.5)
+      tilt
+    http (0.5.0)
+      http_parser.rb
+    http_parser.rb (0.6.0)
+    i18n (0.6.9)
+    json (1.8.1)
+    memoizable (0.4.0)
+      thread_safe (~> 0.1.3)
+    minitest (4.7.5)
+    multi_json (1.8.4)
+    multipart-post (2.0.0)
+    naught (1.0.0)
+    oauth (0.4.7)
+    pit (0.0.7)
     rack (1.5.2)
     rack-protection (1.5.2)
       rack
+    sass (3.2.14)
+    shotgun (0.9)
+      rack (>= 1.0)
+    simple_oauth (0.2.0)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
+    sinatra-websocket (0.3.0)
+      em-websocket (~> 0.3.6)
+      eventmachine
+      thin (>= 1.3.1)
+    thin (1.6.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 1.0.0)
+      rack (>= 1.0.0)
+    thread_safe (0.1.3)
+      atomic
     tilt (1.4.1)
+    twitter (5.7.1)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (~> 0.0.9)
+      faraday (~> 0.9.0)
+      http (~> 0.5.0)
+      http_parser.rb (~> 0.6.0)
+      json (~> 1.8)
+      memoizable (~> 0.4.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.2.0)
+    tzinfo (0.3.38)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
+  coffee-script
+  get-twitter-oauth-token
+  haml
+  pit
+  sass
+  shotgun
   sinatra
+  sinatra-websocket
+  thin
+  twitter (~> 5.7.1)

@@ -20,3 +20,6 @@
 ## Environment normalisation:
 /.bundle/
 /lib/bundler/man/
+
+## IDE
+/.idea/
