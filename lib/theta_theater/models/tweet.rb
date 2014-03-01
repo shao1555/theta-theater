@@ -8,8 +8,7 @@ class Tweet
       @settings
     end
 
-    def fetch_all(options = {})
-      #settings = options[:settings] || nil
+    def fetch_all
       twitter_rest_client = Twitter::REST::Client.new do |config|
         config.consumer_key = settings.twitter_credential[:consumer_key]
         config.consumer_secret = settings.twitter_credential[:consumer_secret]
@@ -28,8 +27,7 @@ class Tweet
       end
     end
 
-    def stream_fetch(options = {})
-      #settings = options[:settings] || nil
+    def stream_fetch
       twitter_streaming_client = Twitter::Streaming::Client.new do |config|
         config.consumer_key = settings.twitter_credential[:consumer_key]
         config.consumer_secret = settings.twitter_credential[:consumer_secret]

@@ -37,11 +37,11 @@ require "#{File.dirname(__FILE__)}/app"
 
 Tweet.settings = settings
 
-# 過去データの取り込み
-Tweet.fetch_all(settings: settings)
+# 自分の過去のタイムラインから theta360 の URL を取得
+Tweet.fetch_all
 
-# ストリーミング
-EM::defer { Tweet.stream_fetch(settings: settings) }
+# UserStream で新しくツイートされた theta360 の URL を取得
+EM::defer { Tweet.stream_fetch }
 
 run Sinatra::Application
 
