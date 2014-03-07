@@ -19,7 +19,6 @@ class Tweet
       me = twitter_rest_client.user
 
       twitter_rest_client.user_timeline(me.id).each do |tweet|
-        p tweet.media
         tweet.urls.map(&:expanded_url).each do |uri|
           if uri.host == 'theta360.com' && uri.path =~ %r{^/s/}
             settings.urls << uri.to_s

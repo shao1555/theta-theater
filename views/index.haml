@@ -1,8 +1,11 @@
-%h1
-  Theta Theater
+%link{rel: 'stylesheet', type: 'text/css', href: stylesheet_path('home')}
 
-%div#photos_index
-  %ul
-    - urls.each do |url|
-      %li
-        %iframe.thumbnail{src: "#{url}?view=embed"}
+%div.container
+  %div.sixteen.columns
+    %h1.remove-bottom
+      Theta Theater
+  - urls.each do |url|
+    %div.photo-item.one-third.columns
+      %iframe.thumbnail{src: "#{url}?view=embed"}
+      %p.link
+        %a{href: url} サイトで表示 (拡大縮小ができます)
