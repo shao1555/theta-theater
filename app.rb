@@ -1,5 +1,5 @@
 get '/' do
-  haml :index, locals: { urls: settings.urls }
+  haml :index, locals: { theta_photos: settings.theta_photos }
 end
 
 get '/theater' do
@@ -7,7 +7,8 @@ get '/theater' do
 end
 
 get '/urls.json' do
-  [ 200, {'Content-Type' => 'application/json'}, settings.urls.to_json ]
+  response = settings.theta_photos.map(&:to_h)
+  [ 200, {'Content-Type' => 'application/json'}, response.to_json ]
 end
 
 get '/realtime' do
@@ -15,7 +16,17 @@ get '/realtime' do
     ws.onopen do
       # 最新 1 件を送る
       settings.sockets << ws
-      ws.send(settings.urls[0])
+      if settings.theta_photos.count > 0
+        ws.send(settings.theta_photos.last.to_h.to_json)
+      else
+        ws.send(
+          {
+            image_url: settings.placeholder,
+            page_url: settings.placeholder,
+            type: :placeholder
+          }.to_json
+        ) if settings.placeholder
+      end
     end
 
     ws.onclose do

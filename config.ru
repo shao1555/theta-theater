@@ -37,12 +37,14 @@ configure do
   set :environment, ENV['RACK_ENV'].to_sym
   set :urls, []
   set :sockets, []
+  set :theta_photos, []
   set :twitter_credential, {
     consumer_key: global_config['consumer_key'],
     consumer_secret: global_config['consumer_secret'],
     access_token: global_config['access_token'],
     access_token_secret: global_config['access_token_secret']
   }
+  set :placeholder, global_config['placeholder']
   disable :run, :reload
 end
 

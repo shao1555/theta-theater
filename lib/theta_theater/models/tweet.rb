@@ -18,13 +18,13 @@ class Tweet
 
       me = twitter_rest_client.user
 
+      p 'fetch all tweets'
       twitter_rest_client.user_timeline(me.id).each do |tweet|
-        tweet.urls.map(&:expanded_url).each do |uri|
-          if uri.host == 'theta360.com' && uri.path =~ %r{^/s/}
-            settings.urls << uri.to_s
-          end
-        end
+        theta_photo = ThetaPhoto.new(tweet)
+        settings.theta_photos << theta_photo if theta_photo.valid?
+        print '.'
       end
+      p 'done.'
     end
 
     def stream_fetch
@@ -38,16 +38,13 @@ class Tweet
       twitter_streaming_client.user do |object|
         case object
         when Twitter::Tweet
-          object.urls.map(&:expanded_url).each do |uri|
-            if uri.host == 'theta360.com' && uri.path =~ %r{^/s/}
-              settings.sockets.each{|s| s.send(uri.to_s) }
-              settings.urls.unshift(uri.to_s)
-              puts uri.to_s
-            end
+          theta_photo = ThetaPhoto.new(tweet)
+          if theta_photo.valid?
+            settings.theta_photos << theta_photo
+            settings.sockets.each{|s| s.send(theta_photo.to_h.to_json) }
           end
         end
       end
-
     end
   end
 end

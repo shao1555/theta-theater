@@ -4,8 +4,9 @@
   %div.sixteen.columns
     %h1.remove-bottom
       Theta Theater
-  - urls.each do |url|
+  - theta_photos.each do |theta_photo|
     %div.photo-item.one-third.columns
-      %iframe.thumbnail{src: "#{url}?view=embed"}
+      %iframe.thumbnail{src: "#{theta_photo.page_uri}?view=embed"}
+        %img{src: theta_photo.image_uri}
       %p.link
-        %a{href: url} サイトで表示 (拡大縮小ができます)
+        %a{href: theta_photo.page_uri} サイトで表示 (拡大縮小ができます)

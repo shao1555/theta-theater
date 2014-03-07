@@ -18,3 +18,4 @@ gem 'get-twitter-oauth-token'
 gem 'twitter', '~> 5.7.1'
 
 gem 'thin'
+gem 'nokogiri'
