@@ -38,7 +38,7 @@ class Tweet
       twitter_streaming_client.user do |object|
         case object
         when Twitter::Tweet
-          theta_photo = ThetaPhoto.new(tweet)
+          theta_photo = ThetaPhoto.new(object)
           if theta_photo.valid?
             settings.theta_photos << theta_photo
             settings.sockets.each{|s| s.send(theta_photo.to_h.to_json) }

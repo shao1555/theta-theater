@@ -19,3 +19,5 @@ gem 'twitter', '~> 5.7.1'
 
 gem 'thin'
 gem 'nokogiri'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'

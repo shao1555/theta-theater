@@ -45,6 +45,7 @@ configure do
     access_token_secret: global_config['access_token_secret']
   }
   set :placeholder, global_config['placeholder']
+  set :no_robot, global_config['no_robot']
   disable :run, :reload
 end
 

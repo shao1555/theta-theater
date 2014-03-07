@@ -4,9 +4,20 @@
   %div.sixteen.columns
     %h1.remove-bottom
       Theta Theater
+    - if mobile_device
+      %p
+        写真を指で動かすと回転ができます
+      %p
+        写真が表示されない部分を動かすとページのスクロールができます
+    - if settings.no_robot
+      %p
+        Twitter や Facebook への投稿はこのページではなく各画像のリンク先で行ってください
+
   - theta_photos.each do |theta_photo|
     %div.photo-item.one-third.columns
       %iframe.thumbnail{src: "#{theta_photo.page_uri}?view=embed"}
         %img{src: theta_photo.image_uri}
       %p.link
         %a{href: theta_photo.page_uri} サイトで表示 (拡大縮小ができます)
+  %div.sixteen.columns.pagination
+    = will_paginate theta_photos

@@ -9,5 +9,5 @@ $ ->
       $('div#frame_container').append img
     else
       $('div#frame_container').empty()
-      iframe = $ '<iframe>', src: "#{url}?view=embed&autoplay=no", class: 'theta-frame'
+      iframe = $ '<iframe>', src: "#{url}?view=embed", class: 'theta-frame'
       $('div#frame_container').append iframe

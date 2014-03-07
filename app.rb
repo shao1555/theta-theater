@@ -1,5 +1,20 @@
+require 'will_paginate/array'
+
 get '/' do
-  haml :index, locals: { theta_photos: settings.theta_photos }
+  if request.user_agent =~ /Android/
+    mobile_device = true
+    per_page = 3
+  elsif request.user_agent =~ /iPhone OS/
+    mobile_device = true
+    per_page = 6
+  else
+    mobile_device = false
+    per_page = 9
+  end
+
+  per_page = params[:per_page] || per_page
+  theta_photos = settings.theta_photos.paginate(page: params[:page], per_page: per_page)
+  haml :index, locals: { theta_photos: theta_photos, mobile_device: mobile_device }
 end
 
 get '/theater' do
