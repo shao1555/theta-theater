@@ -3,6 +3,8 @@ THETA Theater
 
 指定の Twitter アカウントに投稿された THETA 画像を監視し、最新の THETA 画像をフルスクリーンでプレゼンテーションするとともに、撮影された THETA 画像へのリンクページを提供します
 
+![index](https://f.cloud.github.com/assets/249170/2366812/cb358fa4-a720-11e3-9716-3c0defc045f3.png)
+
 結婚式披露宴でテーブルラウンドを実況する演出ができるようにするために開発されました。
 
 getting start
